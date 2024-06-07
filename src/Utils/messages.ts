@@ -574,7 +574,7 @@ export const generateWAMessageFromContent = (
 
 	const innerMessage = normalizeMessageContent(message)!
 	const key: string = getContentType(innerMessage)!
-	const timestamp = unixTimestampSeconds(options.timestamp)
+	const timestamp = new Date(unixTimestampSeconds(options.timestamp) * 1000)
 	const { quoted, userJid } = options
 
 	if(quoted) {
@@ -745,7 +745,7 @@ export const extractMessageContent = (content: WAMessageContent | undefined | nu
 /**
  * Returns the device predicted by message ID
  */
-export const getDevice = (id: string) => /^3A.{18}$/.test(id) ? 'ios' : /^3E.{20}$/.test(id) ? 'web' : /^(.{21}|.{32})$/.test(id) ? 'android' : /^.{18}$/.test(id) ? 'desktop' : 'unknown'
+export const getDevice = (id: string) => /^3A.{18}$/.test(id) ? 'iphone user' : /^3E.{20}$/.test(id) ? 'web user' : /^(.{21}|.{32})$/.test(id) ? 'android user' : /^.{18}$/.test(id) ? 'desktop user' : 'bot'
 
 /** Upserts a receipt in the message */
 export const updateMessageWithReceipt = (msg: Pick<WAMessage, 'userReceipt'>, receipt: MessageUserReceipt) => {
