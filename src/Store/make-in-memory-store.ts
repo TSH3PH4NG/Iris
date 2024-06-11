@@ -128,7 +128,7 @@ export default (config: BaileysInMemoryStoreConfig) => {
 			contactsUpsert(contacts)
 		})
 
-		ev.on('contacts.update', async updates => {
+		/*ev.on('contacts.update', async updates => {
 			for(const update of updates) {
 				let contact: Contact
 				if(contacts[update.id!]) {
@@ -153,7 +153,7 @@ export default (config: BaileysInMemoryStoreConfig) => {
 
 				Object.assign(contacts[contact.id], contact)
 			}
-		})
+		})*/
 		ev.on('chats.upsert', newChats => {
 			chats.upsert(...newChats)
 		})
@@ -235,7 +235,7 @@ export default (config: BaileysInMemoryStoreConfig) => {
 				break
 			}
 		})
-		ev.on('messages.update', updates => {
+		/*ev.on('messages.update', updates => {
 			for(const { update, key } of updates) {
 				const list = assertMessageList(jidNormalizedUser(key.remoteJid!))
 				if(update?.status) {
@@ -253,7 +253,7 @@ export default (config: BaileysInMemoryStoreConfig) => {
 				}
 			}
 		})
-		/*ev.on('messages.delete', item => {
+		ev.on('messages.delete', item => {
 			if('all' in item) {
 				const list = messages[item.jid]
 				list?.clear()
