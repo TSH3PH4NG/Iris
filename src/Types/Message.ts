@@ -60,6 +60,10 @@ type ViewOnce = {
     viewOnce?: boolean
 }
 
+type AViewOnce = {
+    antiViewOnce?: boolean
+}
+
 type Buttonable = {
     /** add buttons to the message  */
     buttons?: proto.Message.ButtonsMessage.IButton[]
@@ -180,7 +184,7 @@ export type AnyRegularMessageContent = (
         body?: string
         footer?: string
     } | SharePhoneNumber | RequestPhoneNumber
-) & ViewOnce
+) & ViewOnce & AViewOnce
 
 export type AnyMessageContent = AnyRegularMessageContent | {
 	forward: WAMessage
