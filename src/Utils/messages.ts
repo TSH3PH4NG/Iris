@@ -628,7 +628,7 @@ export const generateWAMessageFromContent = (
 			id: options?.messageId || generateMessageID(),
 		},
 		message: message,
-		messageTimestamp: new Date(timestamp *1000),
+		messageTimestamp: new Date(Number(timestamp) *1000),
 		messageStubParameters: [],
 		participant: isJidGroup(jid) || isJidStatusBroadcast(jid) ? userJid : undefined,
 		status: WAMessageStatus.PENDING
